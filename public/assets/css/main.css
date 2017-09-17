@@ -1,0 +1,18 @@
+/*@font-face {
+  font-family: Lato;
+  src: url("/assets/fonts/lato/Lato-Black.ttf") format("truetype"), url("/assets/fonts/lato/Lato-BlackItalic.ttf") format("truetype"), url("/assets/fonts/lato/Lato-Bold.ttf") format("truetype"), url("/assets/fonts/lato/Lato-BoldItalic.ttf") format("truetype"), url("/assets/fonts/lato/Lato-Hairline.ttf") format("truetype"), url("/assets/fonts/lato/Lato-Italic.ttf") format("truetype"), url("/assets/fonts/lato/Lato-Ligtht.ttf") format("truetype"), url("/assets/fonts/lato/Lato-LigthtItalic.ttf") format("truetype"), url("/assets/fonts/lato/Lato-Regular.ttf") format("truetype"); }*/
+
+/* line 14, /home/getulio/DEV_WEB/PHP/VHOSTS/curso-php-2-b7web.local/assets/css_dev/main.scss */
+/** {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400; }*/
+
+/* line 19, /home/getulio/DEV_WEB/PHP/VHOSTS/curso-php-2-b7web.local/assets/css_dev/main.scss */
+/*body {
+  padding-top: 50px; }*/
+
+/* line 23, /home/getulio/DEV_WEB/PHP/VHOSTS/curso-php-2-b7web.local/assets/css_dev/main.scss */
+/*h1 h2 {
+  font-weight: 900; }*/
+
+/*# sourceMappingURL=../css/main.map */
