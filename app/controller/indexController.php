@@ -6,6 +6,7 @@
 class indexController extends Controller {
 
     private $login;
+	private $index;
 
     public function __construct() {
         parent::__construct();
@@ -14,11 +15,20 @@ class indexController extends Controller {
 
         if (!$this->login->isLogged()) {
             header("Location: /login");
-        }
+        } else {
+			$this->index = new Index();
+		}
     }
 
     public function index() {
-        $data = array('titulo' => 'MicroBlog!');
+		$data = array(
+			'titulo' => 'Bem vindo ao MicroBlog!',
+			'mensagem' => '',
+			'alert' => 'alert-light',
+			'idUsuario' => $_SESSION['mbLogin']['idUsuario'],
+			'nomeUsuario' => $_SESSION['mbLogin']['nomeUsuario'],
+			'emailUsuario' => $_SESSION['mbLogin']['emailUsuario']
+		);
         $this->loadTemplate('index', $data);
     }
 

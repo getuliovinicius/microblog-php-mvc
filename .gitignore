@@ -22,7 +22,13 @@ app/configuration/**
 #-----------------------------------------
 # AMBIENTE E FERRAMENTAS
 #-----------------------------------------
+
+## SO ##
 .directory
-vendor/
+
+## NodeJS ##
 node_modules/
 npm-debug.log
+
+## Bower ##
+public/vendor

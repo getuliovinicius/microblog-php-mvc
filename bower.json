@@ -1,0 +1,26 @@
+{
+  "name": "curso-php-6-b7web.local",
+  "homepage": "https://github.com/getuliovinicius/microblog-php-mvc",
+  "authors": [
+    "Getúlio Vinicius <getuliovinits@gmail.com>"
+  ],
+  "description": "Sistema de microblog feito com PHP para estudos da linguagem.",
+  "main": "index.php",
+  "keywords": [
+    "Microblog",
+    "PHP",
+    "MVC"
+  ],
+  "license": "GPL-3.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "v4.0.0-beta"
+  }
+}
