@@ -11,6 +11,10 @@
 </head>
 
 <body>
+	<?php
+	if (isset($_SESSION['mbLogin'])):
+	?>
+
 	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand" href="/">MicroBlog!</a>
 		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Navegação">
@@ -32,11 +36,13 @@
 		</div>
 	</nav>
 
+	<?php endif; ?>
+
 	<section id="conteudo">
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<h1 class="display-4"><?php echo $viewData['titulo']; ?></h1>
+					<h1><?php echo $viewData['titulo']; ?></h1>
 				</div>
 			</div>
 			<hr>

@@ -4,11 +4,11 @@
  */
 class usuariosController extends Controller {
 
-	private $query;
+	private $usuario;
 
 	public function __construct() {
 		parent::__construct();
-		$this->query = new Usuarios();
+		$this->usuario = new Usuarios();
 	}
 
 	public function index($mensagem = 'Lista de usuários do MicroBlog') {
@@ -20,11 +20,11 @@ class usuariosController extends Controller {
 			'usuarios' => ''
 		);
 
-		$this->query->queryListAll();
+		$this->usuario->listAll();
 
-		if ($this->query->querySuccess() == 1) {
-			$data['quantidadeRegistros'] = $this->query->queryNumRows();
-			$data['usuarios'] = $this->query->queryResult();
+		if ($this->usuario->querySuccess() == 1) {
+			$data['quantidadeRegistros'] = $this->usuario->queryNumRows();
+			$data['usuarios'] = $this->usuario->queryResult();
 		} else {
 			$data['mensagem'] = 'Não existem usuários cadastrados.';
 		}
@@ -46,12 +46,12 @@ class usuariosController extends Controller {
 			$idUsuario = (isset($_POST['idUsuario']) && (!empty($_POST['idUsuario']))) ? addslashes($_POST['idUsuario']) : NULL;
 
 			if (isset($idUsuario)) {
-				$this->query->querySelectById($idUsuario);
+				$this->usuario->selectById($idUsuario);
 
-				if ($this->query->querySuccess() == 1) {
-					$data['idUsuario'] = $this->query->getIdUsuario();
-					$data['nomeUsuario'] = $this->query->getNomeUsuario();
-					$data['emailUsuario'] = $this->query->getEmailUsuario();
+				if ($this->usuario->querySuccess() == 1) {
+					$data['idUsuario'] = $this->usuario->getIdUsuario();
+					$data['nomeUsuario'] = $this->usuario->getNomeUsuario();
+					$data['emailUsuario'] = $this->usuario->getEmailUsuario();
 				} else {
 					$data['mensagem'] = 'Usuário não encontrado.';
 				}
@@ -76,20 +76,26 @@ class usuariosController extends Controller {
 			$senhaUsuario = (isset($_POST['senhaUsuario']) && (!empty($_POST['senhaUsuario']))) ? md5($_POST['senhaUsuario']) : NULL;
 
 			if (isset($nomeUsuario) && isset($emailUsuario) && isset($senhaUsuario)) {
-				$this->query->setNomeUsuario($nomeUsuario);
-				$this->query->setEmailUsuario($emailUsuario);
-				$this->query->setSenhaUsuario($senhaUsuario);
+				$this->usuario->setNomeUsuario($nomeUsuario);
+				$this->usuario->setEmailUsuario($emailUsuario);
+				$this->usuario->setSenhaUsuario($senhaUsuario);
 
-				if ($this->query->queryCheckEmailExists()) {
-					$data['mensagem'] = "Já existe um usuário com esse endereço de email!";
+				if ($this->usuario->checkEmailExists()) {
 					$data['alert'] = "alert-warning";
+					$data['mensagem'] = "Já existe um usuário com esse endereço de email!";
 				} else {
-					$_SESSION['mbLogin'] = $this->query->queryInsert();
+					$idUsuario = $this->usuario->insert();
+					$login = array(
+						'idUsuario' => $idUsuario,
+						'nomeUsuario' => $nomeUsuario,
+						'emailUsuario' => $emailUsuario
+					);
+					$_SESSION['mbLogin'] = $login;
 					header("Location: /");
 				}
 			} else {
-				$data['mensagem'] = "Ouve um erro no preenchimento do formulário!";
 				$data['alert'] = "alert-danger";
+				$data['mensagem'] = "Ouve um erro no preenchimento do formulário!";
 			}
 		}
 
@@ -112,21 +118,21 @@ class usuariosController extends Controller {
 			$senhaUsuario = (isset($_POST['senhaUsuario']) && (!empty($_POST['senhaUsuario']))) ? md5($_POST['senhaUsuario']) : NULL;
 
 			if (isset($idUsuario) && isset($nomeUsuario) && isset($emailUsuario)) {
-				$this->query->setNomeUsuario($nomeUsuario);
-				$this->query->setSenhaUsuario($senhaUsuario);
-				$this->query->queryUpadte($idUsuario);
+				$this->usuario->setNomeUsuario($nomeUsuario);
+				$this->usuario->setSenhaUsuario($senhaUsuario);
+				$this->usuario->update($idUsuario);
 				header("Location: " . BASE_URL . "/usuarios/cadastro/" . $idUsuario);
 			} else {
 				$data['mensagem'] = "Ouve um erro no preenchimento do formulário!";
 			}
 		}
 
-		$this->query->querySelectById($idUsuario);
+		$this->usuario->selectById($idUsuario);
 
-		if ($this->query->querySuccess() == 1) {
-			$data['idUsuario'] = $this->query->getIdUsuario();
-			$data['nomeUsuario'] = $this->query->getNomeUsuario();
-			$data['emailUsuario'] = $this->query->getEmailUsuario();
+		if ($this->usuario->querySuccess() == 1) {
+			$data['idUsuario'] = $this->usuario->getIdUsuario();
+			$data['nomeUsuario'] = $this->usuario->getNomeUsuario();
+			$data['emailUsuario'] = $this->usuario->getEmailUsuario();
 		} else {
 			$data['mensagem'] = 'Usuário não encontrado!';
 		}
@@ -135,7 +141,7 @@ class usuariosController extends Controller {
 	}
 
 	public function excluir($idUsuario) {
-		$this->query->queryDelete($idUsuario);
+		$this->usuario->delete($idUsuario);
 		$mensagem = 'Usuário removido.';
 		header("Location: " . BASE_URL . "/usuarios");
 	}
@@ -150,12 +156,12 @@ class usuariosController extends Controller {
 			'emailUsuario' => ''
 		);
 
-		$this->query->querySelectById($idUsuario);
+		$this->usuario->selectById($idUsuario);
 
-		if ($this->query->querySuccess() == 1) {
-			$data['idUsuario'] = $this->query->getIdUsuario();
-			$data['nomeUsuario'] = $this->query->getNomeUsuario();
-			$data['emailUsuario'] = $this->query->getEmailUsuario();
+		if ($this->usuario->querySuccess() == 1) {
+			$data['idUsuario'] = $this->usuario->getIdUsuario();
+			$data['nomeUsuario'] = $this->usuario->getNomeUsuario();
+			$data['emailUsuario'] = $this->usuario->getEmailUsuario();
 		} else {
 			$data['mensagem'] = 'Usuário não encontrado';
 		}

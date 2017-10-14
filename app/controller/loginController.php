@@ -4,48 +4,47 @@
  */
 class loginController extends Controller {
 
-	private $queryNewLogin;
+	private $usuario;
+	private $data = array();
 
 	public function __construct() {
 		parent::__construct();
-		$this->queryNewLogin = new Login();
+		$this->usuario = new Usuarios();
 	}
 
 	public function index() {
-		$data = array(
-			'titulo' => 'MicroBlog! - Login',
-			'mensagem' => '',
-			'alert' => 'alert-light',
-		);
+		$this->data['titulo'] = 'MicroBlog! - Login';
+		$this->data['alert'] = 'alert-light';
+		$this->data['mensagem'] = '';
 
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$emailUsuario = (isset($_POST['emailUsuario']) && (!empty($_POST['emailUsuario']))) ? addslashes($_POST['emailUsuario']) : NULL;
 			$senhaUsuario = (isset($_POST['senhaUsuario']) && (!empty($_POST['senhaUsuario']))) ? md5($_POST['senhaUsuario']) : NULL;
 
 			if (isset($emailUsuario) && isset($senhaUsuario)) {
-				$this->queryNewLogin->setEmailUsuario($emailUsuario);
-				$this->queryNewLogin->setSenhaUsuario($senhaUsuario);
-				$this->queryNewLogin->queryLogin();
+				$this->usuario->setEmailUsuario($emailUsuario);
+				$this->usuario->setSenhaUsuario($senhaUsuario);
+				$this->usuario->newLogin();
 
-				if ($this->queryNewLogin->querySuccess() === 1) {
+				if ($this->usuario->querySuccess() === 1) {
 					$login = array(
-						'idUsuario' => $this->queryNewLogin->getIdUsuario(),
-						'nomeUsuario' => $this->queryNewLogin->getNomeUsuario(),
-						'emailUsuario' => $this->queryNewLogin->getEmailUsuario()
+						'idUsuario' => $this->usuario->getIdUsuario(),
+						'nomeUsuario' => $this->usuario->getNomeUsuario(),
+						'emailUsuario' => $this->usuario->getEmailUsuario()
 					);
 					$_SESSION['mbLogin'] = $login;
 					header("Location: /");
 				} else {
-					$data['mensagem'] = 'Usuário não encontrado.';
-					$data['alert'] = "alert-warning";
+					$this->data['alert'] = "alert-warning";
+					$this->data['mensagem'] = 'Usuário não encontrado.';
 				}
 			} else {
-				$data['mensagem'] = 'Ouve um erro no preenchimento do formulário!';
-				$data['alert'] = "alert-danger";
+				$this->data['alert'] = "alert-danger";
+				$this->data['mensagem'] = 'Ouve um erro no preenchimento do formulário!';
 			}
 		}
 
-		$this->loadTemplate('login/login', $data);
+		$this->loadTemplate('login/login', $this->data);
 	}
 
 	public function sair() {

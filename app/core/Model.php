@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Modelo principal - conecta a base de dados
  */

@@ -6,10 +6,10 @@ class Usuarios extends Model {
 
 	// Váriaveis privadas
 
+	private $querySuccess = 0;
 	private $queryNumRows;
 	private $queryResult;
 	private $queryIdInsert;
-	private $querySuccess = 0;
 	private $idUsuario;
 	private $nomeUsuario;
 	private $emailUsuario;
@@ -22,7 +22,7 @@ class Usuarios extends Model {
 	}
 
 	public function queryNumRows() {
-	    return $this->queryNumRows;
+		return $this->queryNumRows;
 	}
 
 	public function queryResult() {
@@ -35,7 +35,7 @@ class Usuarios extends Model {
 
 	// CRUD
 
-	public function queryListAll() {
+	public function listAll() {
 		$sql = "SELECT idUsuario, nomeUsuario, emailUsuario FROM usuarios";
 		$sql = $this->dbConnect->prepare($sql);
 		$sql->execute();
@@ -46,19 +46,19 @@ class Usuarios extends Model {
 		}
 	}
 
-	// trocar para count "SELECT COUNT..."
-	public function queryCheckEmailExists() {
-		$sql = "SELECT idUsuario FROM usuarios WHERE emailUsuario = ?";
+	public function checkEmailExists() {
+		$sql = "SELECT COUNT(emailUsuario) AS total FROM usuarios WHERE emailUsuario = ?";
 		$sql = $this->dbConnect->prepare($sql);
 		$sql->execute(array($this->emailUsuario));
-		if ($sql->rowCount() > 0) {
+		$check = $sql->fetch();
+		if ($check['total'] === 1) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	public function querySelectById($idUsuario) {
+	public function selectById($idUsuario) {
 		$sql = "SELECT * FROM usuarios WHERE idUsuario = ?";
 		$sql = $this->dbConnect->prepare($sql);
 		$sql->execute(array($idUsuario));
@@ -72,24 +72,46 @@ class Usuarios extends Model {
 		}
 	}
 
-	public function queryInsert() {
+	public function insert() {
 		$sql = "INSERT INTO usuarios (nomeUsuario, emailUsuario, senhaUsuario) VALUES (?, ?, ?)";
 		$sql = $this->dbConnect->prepare($sql);
 		$sql->execute(array($this->nomeUsuario, $this->emailUsuario, $this->senhaUsuario));
 		return $this->dbConnect->lastInsertId();
 	}
 
-	public function queryUpadte($idUsuario) {
+	public function upadte($idUsuario) {
 		$sql = "UPDATE usuarios SET nomeUsuario = ?, emailUsuario = ?, senhaUsuario = ? WHERE idUsuario = ?";
 		$sql = $this->dbConnect->prepare($sql);
 		$sql->execute(array($this->nomeUsuario, $this->emailUsuario, $this->senhaUsuario, $idUsuario));
 	}
 
-	public function queryDelete($idUsuario) {
+	public function delete($idUsuario) {
 		$sql = "DELETE FROM usuarios WHERE idUsuario = ?";
 		$sql = $this->dbConnect->prepare($sql);
 		$sql->bindValue(1, $idUsuario);
 		$sql->execute();
+	}
+
+	// Login
+
+	public function isLogged() {
+		if (isset($_SESSION['mbLogin']) && !empty($_SESSION['mbLogin'])) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function newLogin() {
+		$sql = "SELECT idUsuario, nomeUsuario FROM usuarios WHERE emailUsuario = ? AND senhaUsuario = ?";
+		$sql = $this->dbConnect->prepare($sql);
+		$sql->execute(array($this->emailUsuario, $this->senhaUsuario));
+		if ($sql->rowCount() === 1) {
+			$this->querySuccess = 1;
+			$usuario = $sql->fetch();
+			$this->idUsuario = $usuario['idUsuario'];
+			$this->nomeUsuario = $usuario['nomeUsuario'];
+		}
 	}
 
 	// Encapsulamento

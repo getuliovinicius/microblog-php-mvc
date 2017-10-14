@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Controle principal da aplicacação responsável por carregar as páginas.
  */
