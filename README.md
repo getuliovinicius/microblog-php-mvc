@@ -18,7 +18,7 @@ O _front end_ desta aplicação utiliza o framework Bootstrap 4.0.0 - beta.
 
 ## Está faltando
 
-+ Uma página de perfil onde o usuário pode listar os outros usuários que ele está seguindo, e também, se desejar clicar em um botão para deixar de seguir um desses usuários.
++ Uma página de perfil onde o usuário pode listar os outros usuários que ele está seguindo, e também, se desejar, clicar em um botão para deixar de seguir um desses usuários.
 + Uma página de configurações onde o usuário possa alterar seu nome e sua senha.
 + Uma função **esqueceu senha** para o usuário recuperar a senha acessível a partir da tela de login.
 
