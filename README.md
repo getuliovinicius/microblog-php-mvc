@@ -20,9 +20,10 @@ O _front end_ desta aplicação utiliza o framework Bootstrap 4.0.0 - beta.
 
 ## Está faltando
 
-+ Uma página de perfil onde o usuário pode listar os outros usuários que ele está seguindo, bem como deixar de seguir o usuário.
-+ Uma página de configurações onde o usuário possa 
++ Uma página de perfil onde o usuário pode listar os outros usuários que ele está seguindo, e também, se desejar clicar em um botão para deixar de seguir um desses usuários.
++ Uma página de configurações onde o usuário possa alterar seu nome e sua senha.
++ Uma função esqueceu senha
 
-## Licença:
+## Licença
 
 [GNU GENERAL PUBLIC LICENSE - Version 3, 29 June 2007](https://github.com/getuliovinicius/micro-blog-php/blob/master/LICENSE).
