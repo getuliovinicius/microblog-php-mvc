@@ -40,8 +40,14 @@ class Core {
 
 			require_once 'app/core/Controller.php';
 
-			$controller = new $currentController();
-			call_user_func_array(array($controller, $currentAction), $params);
+			if (method_exists($currentController, $currentAction)) {
+				$controller = new $currentController();
+				call_user_func_array(array($controller, $currentAction), $params);	
+			} else {
+				header('HTTP/1.0 404 Not Found');
+				readfile('404.html');
+				exit();
+			}
 
 		} else {
 

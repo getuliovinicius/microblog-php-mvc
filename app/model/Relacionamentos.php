@@ -43,7 +43,7 @@ class Relacionamentos extends Model {
 	}
 
 	public function sugestoes($idUsuario) {
-		$sql = "SELECT DISTINCT idUsuario, nomeUsuario FROM usuarios WHERE idUsuario NOT IN (SELECT idUsuarioSeguido FROM relacionamentos WHERE idUsuarioSeguidor = ?) AND idUsuario <> ?";
+		$sql = "SELECT DISTINCT idUsuario, nomeUsuario FROM usuarios WHERE idUsuario NOT IN (SELECT idUsuarioSeguido FROM relacionamentos WHERE idUsuarioSeguidor = ?) AND idUsuario <> ? LIMIT 5";
 		$sql = $this->dbConnect->prepare($sql);
 		$sql->execute(array($idUsuario, $idUsuario));
 		if ($sql->rowCount() > 0) {

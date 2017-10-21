@@ -22,11 +22,11 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarContent">
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-				<li class="nav-item active">
-					<a class="nav-link" href="/timeline">Timeline <span class="sr-only">(current)</span></a>
-				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="/perfil">Perfil</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/configuracoes">Configurações</a>
 				</li>
 			</ul>
 			<span class="navbar-text">

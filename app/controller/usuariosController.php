@@ -71,7 +71,7 @@ class usuariosController extends Controller {
 		);
 
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			$nomeUsuario = (isset($_POST['nomeUsuario']) && (!empty($_POST['nomeUsuario']))) ? addslashes($_POST['nomeUsuario']) : NULL;
+			$nomeUsuario = (isset($_POST['nomeUsuario']) && (!empty($_POST['nomeUsuario']))) ? addslashes(strip_tags($_POST['nomeUsuario'])) : NULL;
 			$emailUsuario = (isset($_POST['emailUsuario']) && (!empty($_POST['emailUsuario']))) ? addslashes($_POST['emailUsuario']) : NULL;
 			$senhaUsuario = (isset($_POST['senhaUsuario']) && (!empty($_POST['senhaUsuario']))) ? md5($_POST['senhaUsuario']) : NULL;
 

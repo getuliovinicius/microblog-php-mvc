@@ -24,7 +24,7 @@ class indexController extends Controller {
 
 	public function index() {
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			$post = (isset($_POST['post']) && (!empty($_POST['post']))) ? addslashes($_POST['post']) : NULL;
+			$post = (isset($_POST['post']) && (!empty($_POST['post']))) ? addslashes(strip_tags($_POST['post'])) : NULL;
 
 			if (isset($post)) {
 				$this->post->setPost($post);

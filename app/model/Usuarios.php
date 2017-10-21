@@ -51,7 +51,7 @@ class Usuarios extends Model {
 		$sql = $this->dbConnect->prepare($sql);
 		$sql->execute(array($this->emailUsuario));
 		$check = $sql->fetch();
-		if ($check['total'] === 1) {
+		if ($check['total'] == 1) {
 			return true;
 		} else {
 			return false;

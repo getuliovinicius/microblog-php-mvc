@@ -29,7 +29,7 @@
 			<div class="card-body">
 				<p class="card-title h5"><?php echo $value['nomeUsuario']; ?></p>
 				<p class="card-text"><?php echo $value['post']; ?></p>
-				<p class="card-text"><small><?php echo $value['dataPost']; ?></small></p>
+				<p class="card-text"><small><?php echo date('d/m/y H:i', strtotime($value['dataPost'])); ?></small></p>
 			</div>
 		</div>
 
