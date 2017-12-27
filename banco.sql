@@ -1,3 +1,5 @@
+-- MODELO DE DADOS DA APLICAÇÃO
+
 CREATE DATABASE b7web_curso06
 
 USE b7web_curso06

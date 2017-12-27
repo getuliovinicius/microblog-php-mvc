@@ -16,7 +16,7 @@
 			</div>
 			<div class="form-group">
 				<label for="senhaUsuario">Senha</label>
-				<input type="password" name="senhaUsuario" id="senhaUsuario" class="form-control" placeholder="Senha">
+				<input type="password" name="senhaUsuario" id="senhaUsuario" class="form-control">
 			</div>
 			<!-- <div class="form-check">
 				<label class="form-check-label">

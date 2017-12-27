@@ -1,4 +1,1 @@
-jQuery(function () {
-	
-
-});
+// public/assets/js/main.js

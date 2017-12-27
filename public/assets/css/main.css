@@ -1,16 +1,1 @@
-/* Show it is fixed to the top */
-body {
-	padding-top: 4.5rem;
-}
-
-section {
-	min-height: 100vh;
-	padding: 20px 0 50px;
-	box-sizing: border-box;
-}
-
-footer{
-	background-color: #222222;
-	padding: 20px;
-	color: white;
-}
+body{padding-top:4.5rem}section{min-height:100vh;padding:20px 0 50px;box-sizing:border-box}footer{background-color:#222;padding:20px;color:#fff}

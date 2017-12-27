@@ -1,0 +1,36 @@
+{
+  "name": "introducao-ao-design-responsivo",
+  "version": "1.0.0",
+  "description": "Sistema de microblog feito com PHP para estudos da linguagem.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/getuliovinicius/microblog-php-mvc.git"
+  },
+  "keywords": [
+    "bootstrap",
+    "certificacao",
+    "atividade",
+    "workflow",
+    "gulp"
+  ],
+  "author": "Getulio Vinicius <getuliovinits@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/getuliovinicius/microblog-php-mvc/issues"
+  },
+  "homepage": "https://github.com/getuliovinicius/microblog-php-mvc#readme",
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.9.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-notify": "^3.0.0",
+    "gulp-sass": "^3.1.0",
+    "notify-send": "^0.1.2"
+  },
+  "dependencies": {}
+}

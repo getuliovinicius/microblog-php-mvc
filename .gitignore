@@ -2,33 +2,19 @@
 # PROJETO
 #-----------------------------------------
 
-## Diretorios ##
-
-_anotacoes/**
-_fontes/**
-
-app/configuration/**
-
-## Arquivos ##
+#app/configuration/**
 
 #-----------------------------------------
-# FRAMEWORK
+# AMBIENTE, FERRAMENTAS, FRAMEWORK...
 #-----------------------------------------
 
-#-----------------------------------------
-# IDE
-#-----------------------------------------
-
-#-----------------------------------------
-# AMBIENTE E FERRAMENTAS
-#-----------------------------------------
-
-## SO ##
+## S.O. ##
 .directory
 
 ## NodeJS ##
 node_modules/
 npm-debug.log
+package-lock.json
 
 ## Bower ##
 public/vendor
