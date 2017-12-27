@@ -1,6 +1,6 @@
 <?php
 
-define("BASE_URL", "http://curso-php-6-b7web.local");
+define("BASE_URL", "");
 define("ENVIRONMENT", "development");
 
 global $config;
