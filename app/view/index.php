@@ -1,7 +1,10 @@
 <div class="row">
 	<div class="col-12">
 		<div class="alert <?php echo $alert; ?>">
-			<?php echo $mensagem; ?>
+			<?php
+			if (isset($mensagem))
+				echo $mensagem;
+			?>
 		</div>
 	</div>
 </div>

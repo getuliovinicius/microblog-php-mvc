@@ -7,7 +7,7 @@ class Core {
 	function run() {
 
 		$url = $_SERVER['REQUEST_URI'];
-
+		
 		if (!empty($url) && $url != '/') {
 
 			$url = explode('/', $url);
@@ -46,14 +46,14 @@ class Core {
 			} else {
 				header('HTTP/1.0 404 Not Found');
 				readfile('404.html');
-				exit();
+				exit;
 			}
 
 		} else {
 
 			header('HTTP/1.0 404 Not Found');
 			readfile('404.html');
-			exit();
+			exit;
 
 		}
 		
